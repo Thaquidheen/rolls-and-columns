@@ -56,22 +56,48 @@ export function AvatarStack({
   }, [delay]);
 
   return (
-    <div ref={containerRef} className={cn("flex flex-col gap-3", className)}>
-      <p className="trust-text text-white/60 text-sm">{text}</p>
-      <div className="flex items-center">
+    <div ref={containerRef} className={cn("flex flex-col gap-4", className)}>
+      {/* Trust Text - Updated Typography */}
+      <p
+        className="trust-text text-white"
+        style={{
+          fontFamily: "var(--font-plus-jakarta)",
+          fontStyle: "normal",
+          fontWeight: 600,
+          fontSize: "clamp(14px, 3vw, 17px)",
+          lineHeight: "30px",
+          letterSpacing: "-0.02em",
+          color: "#FFFFFF",
+        }}
+      >
+        {text}
+      </p>
+
+      {/* Avatar Stack */}
+      <div
+        className="flex items-center"
+        style={{
+          width: "clamp(120px, 30vw, 146px)",
+          height: "clamp(38px, 10vw, 46px)",
+        }}
+      >
         {Array.from({ length: count }).map((_, index) => (
           <div
             key={index}
             className={cn(
-              "avatar-item w-10 h-10 rounded-full border-2 border-[#0a0a0a] overflow-hidden",
+              "avatar-item rounded-full border-2 border-[#0a0a0a] overflow-hidden",
               index !== 0 && "-ml-3"
             )}
+            style={{
+              width: "clamp(36px, 9vw, 46px)",
+              height: "clamp(36px, 9vw, 46px)",
+            }}
           >
             <Image
               src={avatarUrls[index % avatarUrls.length]}
               alt={`User ${index + 1}`}
-              width={40}
-              height={40}
+              width={46}
+              height={46}
               className="w-full h-full object-cover"
             />
           </div>

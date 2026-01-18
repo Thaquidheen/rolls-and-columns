@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef, useEffect, ReactNode } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { cn } from "@/lib/utils";
 
 interface FloatingCardProps {
-  icon: ReactNode;
+  icon?: ReactNode;
+  image?: string;
   title: string;
   subtitle?: string;
   className?: string;
@@ -16,6 +18,7 @@ interface FloatingCardProps {
 
 export function FloatingCard({
   icon,
+  image,
   title,
   subtitle,
   className,
@@ -57,27 +60,64 @@ export function FloatingCard({
     <div
       ref={cardRef}
       className={cn(
-        "flex flex-col items-center justify-center gap-4",
+        "flex flex-col items-center justify-end gap-4 sm:gap-6 p-4 sm:p-6",
         "shadow-lg shadow-black/20",
         className
       )}
       style={{
-        width: "160px",
-        height: "180px",
-        borderRadius: "20px",
+        width: "clamp(180px, 45vw, 251px)",
+        height: "clamp(220px, 55vw, 308px)",
+        borderRadius: "clamp(20px, 5vw, 29px)",
         border: "3px solid rgba(238, 238, 238, 0.26)",
         background: "rgba(255, 255, 255, 0.11)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        boxSizing: "border-box",
         ...style,
       }}
     >
-      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-        {icon}
-      </div>
-      <div className="text-center">
-        <div className="text-white/60 text-xs mb-1">{subtitle || "Master in"}</div>
-        <div className="text-white font-semibold text-sm">{title}</div>
+      {/* Image or Icon */}
+      {image ? (
+        <div className="w-full flex-1 flex items-center justify-center">
+          <div className="relative" style={{
+            width: "clamp(120px, 30vw, 172px)",
+            height: "clamp(100px, 25vw, 140px)",
+          }}>
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-contain"
+            />
+          </div>
+        </div>
+      ) : icon ? (
+        <div className="w-full flex-1 flex items-center justify-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0">
+            {icon}
+          </div>
+        </div>
+      ) : null}
+
+      {/* Title */}
+      <div className="text-center w-full">
+        <h3
+          className="text-white font-semibold leading-tight"
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: "clamp(18px, 4.5vw, 29px)",
+            lineHeight: "clamp(22px, 5.5vw, 34px)",
+            letterSpacing: "-0.04em",
+            fontWeight: 600,
+          }}
+        >
+          {subtitle && (
+            <span className="block text-xs sm:text-sm mb-1 font-normal text-white/70">
+              {subtitle}
+            </span>
+          )}
+          {title}
+        </h3>
       </div>
     </div>
   );

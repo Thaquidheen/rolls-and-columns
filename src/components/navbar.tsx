@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
 import { cn } from "@/lib/utils";
@@ -24,6 +25,12 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,12 +85,17 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="relative px-2 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors group"
+              className={cn(
+                "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full",
+                isActive(item.href)
+                  ? "bg-[#22c55e] text-white"
+                  : "text-white/90 hover:text-white hover:bg-white/5"
+              )}
             >
               {item.label}
               {item.hasDropdown && (
@@ -101,8 +113,6 @@ export function Navbar() {
                   />
                 </svg>
               )}
-              {/* Active indicator - shows on current page */}
-              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </a>
           ))}
         </div>
