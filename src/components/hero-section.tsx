@@ -214,7 +214,7 @@ export function HeroSection() {
                 Discover More
                 <span className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
                   <svg
-                    className="w-3.5 h-3.5"
+                    className="w-3.5 h-3.5 relative z-10"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
