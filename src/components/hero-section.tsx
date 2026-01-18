@@ -62,44 +62,75 @@ export function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  // Excel icon - matches Figma with green background and grid pattern
+  // Excel icon - Enhanced design matching screenshot
   const ExcelIcon = () => (
-    <div className="w-12 h-12 bg-[#217346] rounded-lg flex items-center justify-center overflow-hidden">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        {/* Left green panel */}
-        <rect x="2" y="4" width="10" height="24" fill="#185C37" rx="2" />
-        {/* White X on green */}
-        <path d="M5 10L9 18M9 10L5 18" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        {/* Right white panel with grid */}
-        <rect x="12" y="4" width="18" height="24" fill="white" rx="2" />
-        {/* Grid lines */}
-        <path d="M12 10H30M12 16H30M12 22H30M18 4V28M24 4V28" stroke="#E0E0E0" strokeWidth="1" />
-        {/* Green cells */}
-        <rect x="13" y="5" width="4" height="4" fill="#C6EFCE" />
-        <rect x="19" y="5" width="4" height="4" fill="#C6EFCE" />
-        <rect x="13" y="11" width="4" height="4" fill="#C6EFCE" />
-        <rect x="25" y="11" width="4" height="4" fill="#C6EFCE" />
-        <rect x="19" y="17" width="4" height="4" fill="#C6EFCE" />
-      </svg>
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="relative" style={{ width: "clamp(48px, 12vw, 72px)", height: "clamp(48px, 12vw, 72px)" }}>
+        {/* Excel Green Background with gradient */}
+        <div
+          className="absolute inset-0 rounded-lg shadow-lg"
+          style={{
+            background: "linear-gradient(135deg, #217346 0%, #185C37 100%)",
+          }}
+        />
+        {/* Excel "X" Symbol - Large and prominent */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span
+            className="font-bold text-white"
+            style={{
+              fontSize: "clamp(28px, 8vw, 44px)",
+              fontFamily: "system-ui, -apple-system",
+              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
+            }}
+          >
+            X
+          </span>
+        </div>
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute bottom-2 right-2 opacity-30">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
+            <rect x="0" y="0" width="8" height="8" />
+            <rect x="11" y="0" width="8" height="8" />
+            <rect x="0" y="11" width="8" height="8" />
+            <rect x="11" y="11" width="8" height="8" />
+          </svg>
+        </div>
+      </div>
     </div>
   );
 
-  // Power BI icon - matches Figma with plus/cross pattern
+  // Power BI icon - Enhanced plus/cross pattern matching screenshot
   const PowerBIIcon = () => (
-    <div className="w-12 h-12 rounded-lg flex items-center justify-center">
-      <div className="grid grid-cols-3 gap-1">
-        {/* Row 1 */}
-        <div className="w-2 h-2"></div>
-        <div className="text-[#00D4FF] text-lg font-bold">+</div>
-        <div className="w-2 h-2"></div>
-        {/* Row 2 */}
-        <div className="text-[#00D4FF] text-lg font-bold">+</div>
-        <div className="text-white text-lg font-bold">+</div>
-        <div className="text-[#00D4FF] text-lg font-bold">+</div>
-        {/* Row 3 */}
-        <div className="w-2 h-2"></div>
-        <div className="text-[#00D4FF] text-lg font-bold">+</div>
-        <div className="w-2 h-2"></div>
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="relative" style={{ width: "clamp(48px, 12vw, 72px)", height: "clamp(48px, 12vw, 72px)" }}>
+        {/* Plus/Cross Pattern Grid using SVG for precision */}
+        <svg viewBox="0 0 80 80" className="w-full h-full">
+          {/* Center plus - white - larger */}
+          <g transform="translate(40, 40)">
+            <rect x="-2.5" y="-14" width="5" height="28" fill="white" rx="1" />
+            <rect x="-14" y="-2.5" width="28" height="5" fill="white" rx="1" />
+          </g>
+          {/* Top plus - cyan */}
+          <g transform="translate(40, 15)">
+            <rect x="-2" y="-10" width="4" height="20" fill="#00D4FF" rx="1" />
+            <rect x="-10" y="-2" width="20" height="4" fill="#00D4FF" rx="1" />
+          </g>
+          {/* Bottom plus - cyan */}
+          <g transform="translate(40, 65)">
+            <rect x="-2" y="-10" width="4" height="20" fill="#00D4FF" rx="1" />
+            <rect x="-10" y="-2" width="20" height="4" fill="#00D4FF" rx="1" />
+          </g>
+          {/* Left plus - cyan */}
+          <g transform="translate(15, 40)">
+            <rect x="-2" y="-10" width="4" height="20" fill="#00D4FF" rx="1" />
+            <rect x="-10" y="-2" width="20" height="4" fill="#00D4FF" rx="1" />
+          </g>
+          {/* Right plus - cyan */}
+          <g transform="translate(65, 40)">
+            <rect x="-2" y="-10" width="4" height="20" fill="#00D4FF" rx="1" />
+            <rect x="-10" y="-2" width="20" height="4" fill="#00D4FF" rx="1" />
+          </g>
+        </svg>
       </div>
     </div>
   );
@@ -107,8 +138,8 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden min-h-[500px] md:min-h-[600px] lg:min-h-[700px]"
-      style={{ height: "100vh", maxHeight: "900px" }}
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: "700px", height: "100vh", maxHeight: "1200px" }}
     >
       {/* Background */}
       <div className="absolute inset-0">
@@ -121,22 +152,26 @@ export function HeroSection() {
         />
         {/* Dot pattern overlay */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 pointer-events-none opacity-10"
           style={{
             backgroundImage: `url('/images/home/dot paatern.png')`,
             backgroundRepeat: "repeat",
           }}
         />
-        {/* Green gradient glow - stronger at bottom-left */}
-        <div className="absolute bottom-0 left-0 w-[300px] sm:w-[500px] lg:w-[800px] h-[200px] sm:h-[350px] lg:h-[500px] bg-[#22c55e]/30 blur-[100px] lg:blur-[180px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/6 w-[200px] sm:w-[400px] lg:w-[600px] h-[150px] sm:h-[300px] lg:h-[400px] bg-[#22c55e]/20 blur-[80px] lg:blur-[150px] rounded-full" />
+        {/* Green gradient glow - Bottom-left flow */}
+        {/* Main gradient - bottom left, stronger */}
+        <div className="absolute bottom-0 left-0 w-[300px] sm:w-[550px] lg:w-[900px] h-[250px] sm:h-[400px] lg:h-[700px] bg-[#22c55e]/30 blur-[120px] lg:blur-[200px] rounded-full" />
+        {/* Secondary gradient - left side, medium */}
+        <div className="absolute bottom-1/4 left-1/4 w-[250px] sm:w-[450px] lg:w-[600px] h-[200px] sm:h-[350px] lg:h-[500px] bg-[#22c55e]/20 blur-[100px] lg:blur-[160px] rounded-full" />
+        {/* Subtle accent - right side */}
+        <div className="absolute bottom-1/3 right-1/3 w-[200px] sm:w-[350px] lg:w-[450px] h-[150px] sm:h-[250px] lg:h-[350px] bg-[#22c55e]/10 blur-[80px] lg:blur-[120px] rounded-full" />
       </div>
 
       {/* Content Container */}
       <div className="relative z-10 h-full max-w-[1600px] mx-auto px-6 lg:px-12">
-        <div className="h-full flex items-center">
+        <div className="h-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
           {/* Left Column - Text Content */}
-          <div className="w-full lg:w-[45%] pt-16 lg:pt-0">
+          <div className="w-full lg:w-[45%] pt-16 lg:pt-0 lg:pr-4">
             <div className="space-y-6">
               {/* Headline */}
               <h1
@@ -145,13 +180,13 @@ export function HeroSection() {
                 style={{
                   fontFamily: "var(--font-montserrat)",
                   fontSize: "clamp(48px, 6vw, 72px)",
-                  lineHeight: "0.95",
-                  letterSpacing: "-0.02em",
+                  lineHeight: "1.0",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 <span className="word inline-block text-white">UNLOCK</span>
                 <br />
-                <span className="word inline-block text-white">NEW </span>
+                <span className="word inline-block text-white mr-2">NEW</span>
                 <span className="word inline-block text-[#22c55e]">CAREER</span>
                 <br />
                 <span className="word inline-block text-white">OPPORTUNITIES</span>
@@ -170,24 +205,14 @@ export function HeroSection() {
               <button
                 ref={buttonRef}
                 className={cn(
-                  "group flex items-center gap-3 bg-transparent border border-white/40",
-                  "px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-medium text-sm text-white",
-                  "hover:bg-white/10 transition-all duration-300"
+                  "group flex items-center gap-3 bg-transparent text-white",
+                  "px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-medium text-sm",
+                  "border-2 border-white/30 hover:border-white hover:bg-white/10",
+                  "transition-all duration-300"
                 )}
               >
                 Discover More
-                <span className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:translate-x-1 transition-transform relative overflow-hidden">
-                  {/* Dots pattern */}
-                  <svg className="absolute inset-0 w-full h-full opacity-60" viewBox="0 0 32 32">
-                    <circle cx="8" cy="8" r="1" fill="white" />
-                    <circle cx="16" cy="8" r="1" fill="white" />
-                    <circle cx="24" cy="8" r="1" fill="white" />
-                    <circle cx="8" cy="16" r="1" fill="white" />
-                    <circle cx="24" cy="16" r="1" fill="white" />
-                    <circle cx="8" cy="24" r="1" fill="white" />
-                    <circle cx="16" cy="24" r="1" fill="white" />
-                    <circle cx="24" cy="24" r="1" fill="white" />
-                  </svg>
+                <span className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
                   <svg
                     className="w-3.5 h-3.5 relative z-10"
                     fill="none"
@@ -214,7 +239,7 @@ export function HeroSection() {
           {/* Right Column - Hero Image & Floating Cards */}
           <div
             ref={imageRef}
-            className="relative lg:absolute right-0 bottom-0 w-full lg:w-[60%] h-[300px] lg:h-full mt-8 lg:mt-0"
+            className="relative w-full lg:w-[55%] h-[750px] md:h-[950px] lg:h-full mt-8 lg:mt-0"
           >
             {/* Main Hero Image */}
             <div className="relative w-full h-full">
@@ -222,7 +247,7 @@ export function HeroSection() {
                 src="/images/home/hero image.png"
                 alt="Professional learning Excel and Power BI"
                 fill
-                className="object-contain object-right-bottom lg:object-cover lg:object-top"
+                className="object-cover object-center-bottom scale-105"
                 priority
               />
 
@@ -231,10 +256,10 @@ export function HeroSection() {
                 icon={<ExcelIcon />}
                 title="Microsoft Excel"
                 subtitle="Master in"
-                className="absolute hidden md:block"
+                className="absolute hidden lg:block"
                 style={{
-                  top: "22%",
-                  left: "2%",
+                  top: "clamp(35%, 40vh, 45%)",
+                  left: "clamp(15%, 18vw, 22%)",
                 }}
                 delay={1.0}
                 floatIntensity={8}
@@ -245,10 +270,10 @@ export function HeroSection() {
                 icon={<PowerBIIcon />}
                 title="Power BI Tools"
                 subtitle="Master in"
-                className="absolute hidden md:block"
+                className="absolute hidden lg:block"
                 style={{
-                  top: "32%",
-                  right: "8%",
+                  top: "clamp(50%, 55vh, 60%)",
+                  right: "clamp(18%, 22vw, 26%)",
                 }}
                 delay={1.2}
                 floatIntensity={12}

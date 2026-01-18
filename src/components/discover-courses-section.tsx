@@ -104,7 +104,7 @@ export function DiscoverCoursesSection() {
     <section className="w-full bg-[#0a0a0a] py-12 md:py-16 lg:py-24">
       <div className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
         <div
-          className="relative w-full max-w-[1596px] min-h-[450px] md:min-h-[600px] lg:min-h-[792px] overflow-visible mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
+          className="relative w-full max-w-[1596px] min-h-[450px] md:min-h-[600px] lg:min-h-[792px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
             boxSizing: "border-box",
             background: "#181614",
@@ -201,8 +201,8 @@ export function DiscoverCoursesSection() {
                         transform: isActive
                           ? "translateX(0) scale(1)"
                           : isNext
-                          ? "translateX(clamp(40px, 10vw, 120px)) scale(0.93)"
-                          : "translateX(clamp(80px, 15vw, 200px)) scale(0.87)",
+                          ? "translateX(clamp(20px, 8vw, 120px)) scale(0.93)"
+                          : "translateX(clamp(40px, 12vw, 200px)) scale(0.87)",
                         opacity: 1,
                         zIndex: isActive ? 30 : isNext ? 20 : 10,
                         pointerEvents: isActive ? "auto" : "none",
@@ -213,7 +213,7 @@ export function DiscoverCoursesSection() {
                       }}
                     >
                       <div className="relative w-full h-full p-4 sm:p-6 md:p-8 flex flex-col justify-between">
-                        {isActive ? (
+                        {isActive && (
                           <>
                             {/* Top Content Group */}
                             <div>
@@ -271,11 +271,11 @@ export function DiscoverCoursesSection() {
                             <div className="flex items-end justify-between">
                               {/* CTA Button */}
                               <button
-                                className="rounded-2xl text-white font-semibold px-6 py-3 transition-all duration-300 hover:shadow-lg hover:opacity-90"
+                                className="rounded-xl sm:rounded-2xl text-white font-semibold px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 transition-all duration-300 hover:shadow-lg hover:opacity-90"
                                 style={{
                                   background: course.color,
                                   fontFamily: "var(--font-plus-jakarta)",
-                                  fontSize: "14px",
+                                  fontSize: "clamp(12px, 2vw, 14px)",
                                 }}
                               >
                                 Take this Course
@@ -294,18 +294,6 @@ export function DiscoverCoursesSection() {
                               </div>
                             </div>
                           </>
-                        ) : (
-                          /* Stacked cards - only show button */
-                          <button
-                            className="rounded-2xl text-white font-semibold px-6 py-3 transition-all duration-300 hover:shadow-lg hover:opacity-90 w-fit mt-auto"
-                            style={{
-                              background: course.color,
-                              fontFamily: "var(--font-plus-jakarta)",
-                              fontSize: "14px",
-                            }}
-                          >
-                            Take this Course
-                          </button>
                         )}
                       </div>
                     </div>

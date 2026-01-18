@@ -45,7 +45,7 @@ export function MentorSection() {
         >
         {/* Responsive Grid Layout */}
         <div className="w-full h-full p-4 md:p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-12 h-full">
             {/* Mentor Card - Full width on mobile, left column on desktop */}
             <div className="w-full lg:w-auto h-full lg:max-w-[542px]">
               <div
@@ -62,8 +62,8 @@ export function MentorSection() {
                     style={{
                       fontFamily: "var(--font-montserrat)",
                       fontWeight: 800,
-                      fontSize: "clamp(40px, 7vw, 59px)",
-                      lineHeight: "clamp(44px, 7.5vw, 58px)",
+                      fontSize: "clamp(24px, 7vw, 59px)",
+                      lineHeight: "clamp(28px, 7.5vw, 58px)",
                       letterSpacing: "-0.02em",
                       color: "rgba(255, 255, 255, 0.62)",
                     }}
@@ -99,15 +99,12 @@ export function MentorSection() {
             </div>
 
             {/* Stat Cards - Stack on mobile, 2x2 grid on tablet/desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pr-0 lg:pr-4">
               {stats.map((stat, index) => {
-                const isHighlightedCard = index === 2; // 98% card
                 return (
                   <div
                     key={index}
-                    className={`group rounded-2xl border transition-all duration-300 cursor-pointer p-6 md:p-8 w-full min-h-[250px] lg:w-[449.1px] lg:h-[299.51px] bg-transparent hover:bg-white hover:border-transparent ${
-                      isHighlightedCard ? "border-blue-500" : "border-white/10"
-                    }`}
+                    className="group rounded-2xl border border-white/10 transition-all duration-300 cursor-pointer p-6 md:p-8 w-full min-h-[250px] lg:h-[299.51px] bg-transparent hover:bg-white hover:border-transparent"
                     style={{
                       backdropFilter: "blur(10px)",
                     }}
@@ -140,7 +137,7 @@ export function MentorSection() {
 
                     {/* Description - Semi-transparent white for all cards */}
                     <div
-                      className="transition-colors duration-300"
+                      className="transition-colors duration-300 group-hover:text-gray-600"
                       style={{
                         fontFamily: "var(--font-plus-jakarta)",
                         fontWeight: 400,
