@@ -79,7 +79,7 @@ export function ScrollHighlightSection({ theme = "light" }: ScrollHighlightSecti
     <section ref={sectionRef} className={`relative py-12 md:py-24 ${colors.background}`}>
       <div className={colors.background}>
         <div
-          className="w-full mx-auto px-4 sm:px-6 md:px-16 lg:px-24"
+          className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8"
           style={{
             fontFamily: "var(--font-plus-jakarta)",
             fontSize: "clamp(16px, 3.5vw, 36px)",

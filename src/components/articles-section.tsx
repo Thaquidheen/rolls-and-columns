@@ -4,51 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import { BlogPost } from "@/types/blog";
+import { getPublishedBlogs } from "@/data/blogs";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Article {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-}
-
-const articles: Article[] = [
-  {
-    id: 1,
-    title: "Best Way to Learn Advanced Excel Skills!",
-    description:
-      "Dive into our curated feed for the freshest insights and developments.",
-    image: "/images/articles/article-1.jpg",
-    link: "/articles/advanced-excel-skills",
-  },
-  {
-    id: 2,
-    title: "Mastering Data Analytics with Power BI",
-    description:
-      "Discover powerful techniques to transform your data visualization skills.",
-    image: "/images/articles/article-2.jpg",
-    link: "/articles/power-bi-analytics",
-  },
-  {
-    id: 3,
-    title: "Excel Formulas Every Professional Should Know",
-    description:
-      "Essential formulas and functions to boost your productivity.",
-    image: "/images/articles/article-3.jpg",
-    link: "/articles/essential-formulas",
-  },
-  {
-    id: 4,
-    title: "Automation Tips for Excel Power Users",
-    description:
-      "Learn how to automate repetitive tasks and save hours of work.",
-    image: "/images/articles/article-4.jpg",
-    link: "/articles/automation-tips",
-  },
-];
+// Get published blogs from data file
+const articles = getPublishedBlogs();
 
 export function ArticlesSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -139,8 +101,8 @@ export function ArticlesSection() {
       className="w-full bg-white py-12 md:py-16 lg:py-24"
     >
       {/* Header */}
-      <div className="px-8 md:px-16 lg:px-24">
-        <div className="max-w-[1596px] mx-auto">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto">
           <div
             ref={headerRef}
             className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12 mb-12 lg:mb-16"
@@ -177,7 +139,7 @@ export function ArticlesSection() {
                 industry developments.
               </p>
               <a
-                href="/articles"
+                href="/blogs"
                 className="inline-flex items-center gap-2 text-black font-semibold text-sm hover:gap-3 transition-all duration-300"
                 style={{
                   fontFamily: "var(--font-plus-jakarta)",
@@ -301,7 +263,7 @@ function ArticleCard({
   article,
   isCenter,
 }: {
-  article: Article;
+  article: BlogPost;
   isCenter: boolean;
 }) {
   return (
@@ -355,7 +317,7 @@ function ArticleCard({
           </p>
         )}
         <a
-          href={article.link}
+          href={`/blogs/${article.slug}`}
           className="inline-flex items-center gap-2 text-white font-medium hover:gap-3 transition-all duration-300"
           style={{
             fontFamily: "var(--font-plus-jakarta)",

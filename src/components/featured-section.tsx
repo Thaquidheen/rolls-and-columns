@@ -151,8 +151,8 @@ export function FeaturedSection() {
       ref={sectionRef}
       className="w-full bg-white py-24"
     >
-      <div className="px-8 md:px-16 lg:px-24">
-        <div className="max-w-[1596px] mx-auto">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto">
         {/* Section Header */}
         <div ref={titleRef} className="flex items-start justify-between mb-16">
           <div className="space-y-2">
@@ -220,6 +220,7 @@ export function FeaturedSection() {
                       width="100%"
                       height="100%"
                       src={`https://www.youtube.com/embed/${item.videoId}`}
+                      loading="lazy"
                       title={item.title}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

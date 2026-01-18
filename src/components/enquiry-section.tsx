@@ -86,7 +86,7 @@ export function EnquirySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden px-8 md:px-16 lg:px-24 py-16 md:py-20 lg:py-24"
+      className="relative w-full overflow-hidden py-16 md:py-20 lg:py-24"
       style={{ backgroundColor: "#161616" }}
     >
       {/* Background Image */}
@@ -131,7 +131,7 @@ export function EnquirySection() {
         }}
       />
 
-      <div className="relative z-10 max-w-[1596px] mx-auto">
+      <div className="relative z-10 max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Vertical Separator Line with Gradient */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 hidden lg:block"

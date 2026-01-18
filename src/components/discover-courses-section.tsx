@@ -101,8 +101,8 @@ export function DiscoverCoursesSection() {
   }, [isHovered]);
 
   return (
-    <section className="w-full bg-[#0a0a0a] py-12 md:py-16 lg:py-24">
-      <div className="px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+    <section className="w-full bg-white py-12 md:py-16 lg:py-24">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="relative w-full max-w-[1596px] min-h-[450px] md:min-h-[600px] lg:min-h-[792px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{

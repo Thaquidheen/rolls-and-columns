@@ -17,27 +17,39 @@ export function WhyBusinessLoveSection() {
   const [startX, setStartX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  const [isMounted, setIsMounted] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(1024);
 
   // Responsive card width helpers
   const getCardWidth = () => {
-    if (typeof window === 'undefined') return 478;
+    if (!isMounted) return 478; // Default for SSR
     if (windowWidth < 640) return windowWidth - 48; // Mobile: full width minus padding
     if (windowWidth < 1024) return 400; // Tablet
     return 478; // Desktop
   };
 
   const getGap = () => {
-    if (typeof window === 'undefined') return 24;
+    if (!isMounted) return 24; // Default for SSR
     if (windowWidth < 640) return 16; // Mobile
     return 24; // Desktop
   };
 
+  const getMinHeight = () => {
+    if (!isMounted) return "537.69px"; // Default for SSR
+    if (windowWidth < 640) return "450px";
+    if (windowWidth < 1024) return "480px";
+    return "537.69px";
+  };
+
   const cardWidth = getCardWidth();
   const gap = getGap();
+  const minHeight = getMinHeight();
 
-  // Update window width on resize
+  // Initialize on mount and handle resize
   useEffect(() => {
+    setIsMounted(true);
+    setWindowWidth(window.innerWidth);
+
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -46,7 +58,7 @@ export function WhyBusinessLoveSection() {
   const testimonials = [
     {
       id: 1,
-      companyLogo: "/images/testimonials/aurak-logo.png",
+      companyLogo: "/images/about/Ajman.png",
       quote: "Training with Mr. Mohammed Alfan elevated my Excel skills to new heights. I'm now a proficient Excel user, all thanks to the expert guidance!",
       profileImage: "/images/testimonials/ronald-richards.jpg",
       name: "Ronald Richards",
@@ -55,7 +67,7 @@ export function WhyBusinessLoveSection() {
     },
     {
       id: 2,
-      companyLogo: "/images/testimonials/sib-logo.png",
+      companyLogo: "/images/about/Aus.png",
       quote: "The Excel training program transformed how our team handles data. Highly recommended!",
       profileImage: "/images/testimonials/profile-2.jpg",
       name: "Jane Cooper",
@@ -64,7 +76,7 @@ export function WhyBusinessLoveSection() {
     },
     {
       id: 3,
-      companyLogo: "/images/testimonials/watchtower-logo.png",
+      companyLogo: "/images/about/DHL.png",
       quote: "Outstanding training that delivers real-world results. Our productivity increased significantly!",
       profileImage: "/images/testimonials/profile-3.jpg",
       name: "Robert Fox",
@@ -73,7 +85,7 @@ export function WhyBusinessLoveSection() {
     },
     {
       id: 4,
-      companyLogo: "/images/testimonials/aurak-logo.png",
+      companyLogo: "/images/about/slb.png",
       quote: "Mohammed Alfan's expertise in Excel is unmatched. The training sessions were incredibly valuable for our entire organization.",
       profileImage: "/images/testimonials/profile-4.jpg",
       name: "Sarah Johnson",
@@ -159,10 +171,10 @@ export function WhyBusinessLoveSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-20 lg:py-32 px-6 lg:px-12"
+      className="relative w-full py-20 lg:py-32"
       style={{ background: "#F7F7F7" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div ref={titleRef} className="text-center mb-16 space-y-4">
           <h2
@@ -192,7 +204,7 @@ export function WhyBusinessLoveSection() {
           <div
             className="flex transition-transform duration-500 ease-out cursor-grab active:cursor-grabbing"
             style={{
-              transform: `translateX(-${currentSlide * (cardWidth + gap)}px)`,
+              transform: `translateX(${currentSlide === 0 ? '0px' : `-${currentSlide * (cardWidth + gap)}px`})`,
               gap: `${gap}px`,
             }}
             onMouseDown={handleMouseDown}
@@ -213,7 +225,7 @@ export function WhyBusinessLoveSection() {
                   className="testimonial-card group relative p-6 md:p-8 transition-all duration-300 flex flex-col items-center text-center rounded-xl md:rounded-2xl"
                   style={{
                     width: `${cardWidth}px`,
-                    minHeight: windowWidth < 640 ? "450px" : windowWidth < 1024 ? "480px" : "537.69px",
+                    minHeight: minHeight,
                     background: "#FFFFFF",
                     boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.08)",
                     border: "2px solid #f3f4f6",

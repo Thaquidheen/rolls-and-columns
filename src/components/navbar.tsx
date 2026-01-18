@@ -72,35 +72,66 @@ export function Navbar() {
       )}
       style={{ opacity: 1, visibility: "visible" }}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <Image
-            src="/images/home/logo.png"
-            alt="Rows & Columns"
-            width={150}
-            height={40}
-            className="h-10 w-auto"
-          />
-        </div>
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-[85px]">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <Image
+              src="/images/home/logo.png"
+              alt="Rows & Columns"
+              width={150}
+              height={40}
+              className="h-10"
+              style={{ width: "auto" }}
+              priority
+            />
+          </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-6 py-2">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className={cn(
-                "relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full",
-                isActive(item.href)
-                  ? "bg-[#22c55e] text-white"
-                  : "text-white/90 hover:text-white hover:bg-white/5"
-              )}
-            >
-              {item.label}
-              {item.hasDropdown && (
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "relative px-4 py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
+                  isActive(item.href)
+                    ? "text-white"
+                    : "text-white/90 hover:text-white"
+                )}
+                style={{
+                  boxSizing: "border-box",
+                  background: isActive(item.href) ? "#22c55e" : "#2B2B2B",
+                  border: "1px solid rgba(255, 255, 255, 0.16)",
+                  fontSize: "14px",
+                }}
+              >
+                {item.label}
+                {item.hasDropdown && (
+                  <svg
+                    className="inline-block ml-1 w-3 h-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                )}
+              </a>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button className="flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-5 py-2.5 transition-all">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                 <svg
-                  className="inline-block ml-1 w-3 h-3"
+                  className="w-5 h-5 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -109,70 +140,49 @@ export function Navbar() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-              )}
-            </a>
-          ))}
-        </div>
+              </div>
+              <div className="text-left">
+                <div className="text-white text-sm font-medium">Book a 30 min call</div>
+                <div className="flex items-center gap-1.5 text-xs text-white/60">
+                  <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse"></span>
+                  Available now
+                </div>
+              </div>
+            </button>
+          </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:flex items-center gap-3">
-          <button className="flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-5 py-2.5 transition-all">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden text-white p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  d="M6 18L18 6M6 6l12 12"
                 />
-              </svg>
-            </div>
-            <div className="text-left">
-              <div className="text-white text-sm font-medium">Book a 30 min call</div>
-              <div className="flex items-center gap-1.5 text-xs text-white/60">
-                <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse"></span>
-                Available now
-              </div>
-            </div>
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
           </button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden text-white p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {isMobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
       </div>
 
       {/* Mobile Menu */}

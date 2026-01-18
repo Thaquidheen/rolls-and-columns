@@ -33,8 +33,8 @@ const stats: Stat[] = [
 
 export function MentorSection() {
   return (
-    <section className="w-full bg-[#0a0a0a] py-24">
-      <div className="px-8 md:px-16 lg:px-24">
+    <section className="w-full bg-white py-24">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className="relative w-full max-w-[1596px] min-h-[600px] md:min-h-[650px] lg:h-[724px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
