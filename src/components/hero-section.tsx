@@ -127,9 +127,9 @@ export function HeroSection() {
             backgroundRepeat: "repeat",
           }}
         />
-        {/* Green gradient glow */}
-        <div className="absolute bottom-0 left-1/4 w-[200px] sm:w-[400px] lg:w-[600px] h-[150px] sm:h-[250px] lg:h-[400px] bg-[#22c55e]/20 blur-[80px] lg:blur-[150px] rounded-full" />
-        <div className="absolute top-1/3 right-1/4 w-[150px] sm:w-[300px] lg:w-[400px] h-[100px] sm:h-[200px] lg:h-[300px] bg-[#22c55e]/10 blur-[60px] lg:blur-[120px] rounded-full" />
+        {/* Green gradient glow - stronger at bottom-left */}
+        <div className="absolute bottom-0 left-0 w-[300px] sm:w-[500px] lg:w-[800px] h-[200px] sm:h-[350px] lg:h-[500px] bg-[#22c55e]/30 blur-[100px] lg:blur-[180px] rounded-full" />
+        <div className="absolute bottom-1/4 left-1/6 w-[200px] sm:w-[400px] lg:w-[600px] h-[150px] sm:h-[300px] lg:h-[400px] bg-[#22c55e]/20 blur-[80px] lg:blur-[150px] rounded-full" />
       </div>
 
       {/* Content Container */}
@@ -170,15 +170,26 @@ export function HeroSection() {
               <button
                 ref={buttonRef}
                 className={cn(
-                  "group flex items-center gap-3 bg-white text-black",
-                  "px-4 py-2 sm:px-5 sm:py-3 rounded-full font-medium text-sm",
-                  "hover:bg-white/90 transition-all duration-300"
+                  "group flex items-center gap-3 bg-transparent border border-white/40",
+                  "px-4 py-2 sm:px-5 sm:py-2.5 rounded-full font-medium text-sm text-white",
+                  "hover:bg-white/10 transition-all duration-300"
                 )}
               >
                 Discover More
-                <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <span className="w-8 h-8 rounded-full border border-white/40 flex items-center justify-center group-hover:translate-x-1 transition-transform relative overflow-hidden">
+                  {/* Dots pattern */}
+                  <svg className="absolute inset-0 w-full h-full opacity-60" viewBox="0 0 32 32">
+                    <circle cx="8" cy="8" r="1" fill="white" />
+                    <circle cx="16" cy="8" r="1" fill="white" />
+                    <circle cx="24" cy="8" r="1" fill="white" />
+                    <circle cx="8" cy="16" r="1" fill="white" />
+                    <circle cx="24" cy="16" r="1" fill="white" />
+                    <circle cx="8" cy="24" r="1" fill="white" />
+                    <circle cx="16" cy="24" r="1" fill="white" />
+                    <circle cx="24" cy="24" r="1" fill="white" />
+                  </svg>
                   <svg
-                    className="w-3.5 h-3.5"
+                    className="w-3.5 h-3.5 relative z-10"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -203,7 +214,7 @@ export function HeroSection() {
           {/* Right Column - Hero Image & Floating Cards */}
           <div
             ref={imageRef}
-            className="relative lg:absolute right-0 bottom-0 w-full lg:w-[58%] h-[300px] lg:h-[95%] mt-8 lg:mt-0"
+            className="relative lg:absolute right-0 bottom-0 w-full lg:w-[60%] h-[300px] lg:h-full mt-8 lg:mt-0"
           >
             {/* Main Hero Image */}
             <div className="relative w-full h-full">
@@ -211,7 +222,7 @@ export function HeroSection() {
                 src="/images/home/hero image.png"
                 alt="Professional learning Excel and Power BI"
                 fill
-                className="object-contain object-right-bottom"
+                className="object-contain object-right-bottom lg:object-cover lg:object-top"
                 priority
               />
 
@@ -222,8 +233,8 @@ export function HeroSection() {
                 subtitle="Master in"
                 className="absolute hidden md:block"
                 style={{
-                  top: "28%",
-                  left: "8%",
+                  top: "22%",
+                  left: "2%",
                 }}
                 delay={1.0}
                 floatIntensity={8}
@@ -236,8 +247,8 @@ export function HeroSection() {
                 subtitle="Master in"
                 className="absolute hidden md:block"
                 style={{
-                  top: "18%",
-                  right: "5%",
+                  top: "32%",
+                  right: "8%",
                 }}
                 delay={1.2}
                 floatIntensity={12}

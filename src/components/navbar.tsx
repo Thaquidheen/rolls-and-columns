@@ -78,12 +78,17 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-1 bg-[#1a1a1a]/80 backdrop-blur-sm rounded-full px-2 py-1.5">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="relative px-2 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors group"
+              className={cn(
+                "relative px-4 py-2 text-sm font-medium transition-colors rounded-full",
+                item.label === "HOME"
+                  ? "bg-[#22c55e] text-white"
+                  : "text-white/90 hover:text-white hover:bg-white/10"
+              )}
             >
               {item.label}
               {item.hasDropdown && (
@@ -101,8 +106,6 @@ export function Navbar() {
                   />
                 </svg>
               )}
-              {/* Active indicator - shows on current page */}
-              <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </a>
           ))}
         </div>
