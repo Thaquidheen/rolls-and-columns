@@ -5,8 +5,8 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="w-full bg-[#161616] text-white">
-      <div className="px-8 md:px-16 lg:px-24 py-12 md:py-16">
-        <div className="max-w-[1596px] mx-auto">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div>
           {/* Top Section - Social Media & Contact Info */}
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12 mb-12">
             {/* Left - Social Media */}

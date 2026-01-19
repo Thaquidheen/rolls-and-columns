@@ -50,7 +50,7 @@ export function BlogGridSection() {
 
   return (
     <section ref={sectionRef} className="w-full bg-white py-16 md:py-24">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filter Buttons */}
         <div className="flex justify-center mb-12 md:mb-16">
           <div

@@ -140,7 +140,7 @@ export function ContactInfoSection() {
       className="relative w-full py-16 md:py-20 lg:py-24"
       style={{ backgroundColor: "#0a0a0a" }}
     >
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
           ref={cardsRef}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
