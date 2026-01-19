@@ -151,8 +151,8 @@ export function EnquirySection() {
                 fontFamily: "var(--font-plus-jakarta)",
                 fontStyle: "normal",
                 fontWeight: 400,
-                fontSize: "clamp(36px, 5vw, 66px)",
-                lineHeight: "72px",
+                fontSize: "clamp(28px, 5vw, 66px)",
+                lineHeight: "1.1",
                 letterSpacing: "-0.02em",
                 color: "#FFFFFF",
               }}
@@ -205,7 +205,7 @@ export function EnquirySection() {
                     fontStyle: "normal",
                     fontWeight: 400,
                     fontSize: "clamp(28px, 3vw, 40px)",
-                    lineHeight: "63px",
+                    lineHeight: "1.2",
                     color: "#FFFFFF",
                   }}
                 >

@@ -76,7 +76,7 @@ export function HeroSection() {
   // Excel icon - Matching the Figma design with layered sheets
   const ExcelIcon = () => (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="relative" style={{ width: "clamp(56px, 14vw, 80px)", height: "clamp(56px, 14vw, 80px)" }}>
+      <div className="relative" style={{ width: "clamp(48px, 5vw, 80px)", height: "clamp(48px, 5vw, 80px)" }}>
         {/* Back sheet - lighter */}
         <div
           className="absolute rounded-lg"
@@ -113,7 +113,7 @@ export function HeroSection() {
           <span
             className="font-bold text-white"
             style={{
-              fontSize: "clamp(24px, 6vw, 36px)",
+              fontSize: "clamp(20px, 2vw, 36px)",
               fontFamily: "system-ui, -apple-system",
             }}
           >
@@ -127,7 +127,7 @@ export function HeroSection() {
   // Power BI icon - Plus/cross pattern matching Figma
   const PowerBIIcon = () => (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="relative" style={{ width: "clamp(56px, 14vw, 80px)", height: "clamp(56px, 14vw, 80px)" }}>
+      <div className="relative" style={{ width: "clamp(48px, 5vw, 80px)", height: "clamp(48px, 5vw, 80px)" }}>
         <svg viewBox="0 0 80 80" className="w-full h-full">
           {/* Center plus - white - larger */}
           <g transform="translate(40, 40)">
@@ -162,7 +162,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden lg:h-screen pb-6 sm:pb-8 md:pb-10 lg:pb-0"
+      className="relative w-full overflow-hidden lg:h-screen pb-6 sm:pb-8 lg:pb-0"
     >
       {/* Background */}
       <div className="absolute inset-0">
@@ -182,16 +182,16 @@ export function HeroSection() {
           }}
         />
         {/* Green gradient glow - Bottom-left flow */}
-        <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] lg:w-[900px] h-[180px] sm:h-[300px] lg:h-[700px] bg-[#22c55e]/25 sm:bg-[#22c55e]/30 blur-[80px] sm:blur-[100px] lg:blur-[200px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/4 w-[200px] sm:w-[350px] lg:w-[600px] h-[140px] sm:h-[250px] lg:h-[500px] bg-[#22c55e]/15 sm:bg-[#22c55e]/20 blur-[60px] sm:blur-[80px] lg:blur-[160px] rounded-full" />
-        <div className="absolute bottom-1/3 right-1/3 w-[160px] sm:w-[280px] lg:w-[450px] h-[100px] sm:h-[180px] lg:h-[350px] bg-[#22c55e]/8 sm:bg-[#22c55e]/10 blur-[50px] sm:blur-[60px] lg:blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] md:w-[600px] lg:w-[900px] h-[180px] sm:h-[300px] md:h-[500px] lg:h-[700px] bg-[#22c55e]/25 sm:bg-[#22c55e]/30 blur-[80px] sm:blur-[100px] md:blur-[150px] lg:blur-[200px] rounded-full" />
+        <div className="absolute bottom-1/4 left-1/4 w-[200px] sm:w-[350px] md:w-[480px] lg:w-[600px] h-[140px] sm:h-[250px] md:h-[380px] lg:h-[500px] bg-[#22c55e]/15 sm:bg-[#22c55e]/20 blur-[60px] sm:blur-[80px] md:blur-[120px] lg:blur-[160px] rounded-full" />
+        <div className="absolute bottom-1/3 right-1/3 w-[160px] sm:w-[280px] md:w-[360px] lg:w-[450px] h-[100px] sm:h-[180px] md:h-[260px] lg:h-[350px] bg-[#22c55e]/8 sm:bg-[#22c55e]/10 blur-[50px] sm:blur-[60px] md:blur-[90px] lg:blur-[120px] rounded-full" />
       </div>
 
       {/* Content Container */}
       <div className="relative z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 lg:h-full">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-12 lg:h-full">
           {/* Left Column - Text Content */}
-          <div className="w-full lg:w-[45%] pt-32 sm:pt-36 md:pt-40 lg:pt-0 relative z-20">
+          <div className="w-full lg:w-[45%] pt-28 sm:pt-32 md:pt-36 lg:pt-24 xl:pt-20 relative z-20 lg:flex lg:items-center">
             <div className="space-y-2 sm:space-y-3 md:space-y-4 lg:space-y-6">
               {/* Headline */}
               <h1
@@ -199,8 +199,8 @@ export function HeroSection() {
                 className="font-extrabold uppercase"
                 style={{
                   fontFamily: "var(--font-montserrat)",
-                  fontSize: "clamp(32px, 8vw, 72px)",
-                  lineHeight: "1.0",
+                  fontSize: "clamp(32px, 3.5vw, 72px)",
+                  lineHeight: "1.05",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -245,7 +245,7 @@ export function HeroSection() {
           {/* Right Column - Hero Image & Floating Cards */}
           <div
             ref={imageRef}
-            className="relative w-full lg:w-[70%] h-[240px] sm:h-[280px] md:h-[360px] lg:h-[calc(100vh-80px)] lg:absolute lg:bottom-0 lg:right-0"
+            className="relative w-full lg:w-[70%] h-[280px] sm:h-[320px] md:h-[400px] lg:h-[calc(100vh-80px)] lg:absolute lg:bottom-0 lg:right-0"
           >
             {/* Main Hero Image */}
             <div className="relative w-full h-full">
@@ -262,10 +262,10 @@ export function HeroSection() {
                 icon={<ExcelIcon />}
                 title="Microsoft Excel"
                 subtitle="Master in"
-                className="absolute hidden lg:block"
+                className="absolute hidden xl:block"
                 style={{
                   top: "35%",
-                  left: "10%",
+                  left: "25%",
                 }}
                 delay={1.0}
                 floatIntensity={8}
@@ -276,7 +276,7 @@ export function HeroSection() {
                 icon={<PowerBIIcon />}
                 title="Power BI Tools"
                 subtitle="Master in"
-                className="absolute hidden lg:block"
+                className="absolute hidden xl:block"
                 style={{
                   top: "45%",
                   right: "15%",

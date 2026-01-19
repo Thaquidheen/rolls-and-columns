@@ -33,10 +33,10 @@ const stats: Stat[] = [
 
 export function MentorSection() {
   return (
-    <section className="w-full bg-white py-24">
+    <section className="w-full bg-white py-12 md:py-16 lg:py-24">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="relative w-full max-w-[1596px] min-h-[600px] md:min-h-[650px] lg:h-[724px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
+          className="relative w-full max-w-[1596px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
             background: "#181614",
             borderColor: "rgba(227, 227, 227, 0.1)",
@@ -44,10 +44,10 @@ export function MentorSection() {
           }}
         >
         {/* Responsive Grid Layout */}
-        <div className="w-full h-full p-4 md:p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-8 lg:gap-12 h-full">
+        <div className="w-full h-full p-4 md:p-6 lg:p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] gap-6 md:gap-8 lg:gap-10 h-full">
             {/* Mentor Card - Full width on mobile, left column on desktop */}
-            <div className="w-full lg:w-auto h-full lg:max-w-[542px]">
+            <div className="w-full h-full md:max-w-full lg:max-w-[542px]">
               <div
                 className="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden"
                 style={{
@@ -76,7 +76,7 @@ export function MentorSection() {
                   </h2>
 
                   {/* Mentor Image with Green Gradient */}
-                  <div className="relative w-full flex-1 min-h-[300px] mt-auto">
+                  <div className="relative w-full flex-1 min-h-[200px] md:min-h-[250px] lg:min-h-[300px] mt-auto">
                     <div
                       className="absolute inset-0"
                       style={{
@@ -99,24 +99,24 @@ export function MentorSection() {
             </div>
 
             {/* Stat Cards - Stack on mobile, 2x2 grid on tablet/desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pr-0 lg:pr-4">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-6 pr-0 lg:pr-4">
               {stats.map((stat, index) => {
                 return (
                   <div
                     key={index}
-                    className="group rounded-2xl border border-white/10 transition-all duration-300 cursor-pointer p-6 md:p-8 w-full min-h-[250px] lg:h-[299.51px] bg-transparent hover:bg-white hover:border-transparent"
+                    className="group rounded-xl md:rounded-2xl border border-white/10 transition-all duration-300 cursor-pointer p-4 md:p-6 lg:p-8 w-full min-h-[150px] md:min-h-[180px] lg:min-h-[240px] bg-transparent hover:bg-white hover:border-transparent"
                     style={{
                       backdropFilter: "blur(10px)",
                     }}
                   >
                     {/* Number - Gray for all cards, Green on hover */}
                     <div
-                      className="font-bold mb-3 transition-colors duration-300 text-[#7B7B7B] group-hover:text-[#22c55e]"
+                      className="font-bold mb-2 md:mb-3 transition-colors duration-300 text-[#7B7B7B] group-hover:text-[#22c55e]"
                       style={{
                         fontFamily: "var(--font-montserrat)",
                         fontWeight: 600,
-                        fontSize: "clamp(48px, 7vw, 64px)",
-                        lineHeight: "clamp(52px, 7.5vw, 70px)",
+                        fontSize: "clamp(32px, 5vw, 64px)",
+                        lineHeight: "1.1",
                         letterSpacing: "-0.02em",
                       }}
                     >
@@ -125,10 +125,10 @@ export function MentorSection() {
 
                     {/* Title - White for all cards, Black on hover */}
                     <div
-                      className="font-semibold mb-2 transition-colors duration-300 text-white group-hover:text-black"
+                      className="font-semibold mb-1 md:mb-2 transition-colors duration-300 text-white group-hover:text-black"
                       style={{
                         fontFamily: "var(--font-plus-jakarta)",
-                        fontSize: "clamp(18px, 2vw, 24px)",
+                        fontSize: "clamp(14px, 2vw, 24px)",
                         lineHeight: "1.3",
                       }}
                     >
@@ -137,12 +137,12 @@ export function MentorSection() {
 
                     {/* Description - Semi-transparent white for all cards */}
                     <div
-                      className="transition-colors duration-300 group-hover:text-gray-600"
+                      className="transition-colors duration-300 group-hover:text-gray-600 hidden md:block"
                       style={{
                         fontFamily: "var(--font-plus-jakarta)",
                         fontWeight: 400,
-                        fontSize: "clamp(16px, 2.5vw, 20px)",
-                        lineHeight: "clamp(24px, 3vw, 28px)",
+                        fontSize: "clamp(12px, 1.5vw, 18px)",
+                        lineHeight: "1.5",
                         color: "rgba(255, 255, 255, 0.61)",
                       }}
                     >

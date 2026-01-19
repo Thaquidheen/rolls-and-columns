@@ -104,7 +104,7 @@ export function DiscoverCoursesSection() {
     <section className="w-full bg-white py-12 md:py-16 lg:py-24">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="relative w-full max-w-[1596px] min-h-[450px] md:min-h-[600px] lg:min-h-[792px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
+          className="relative w-full max-w-[1596px] min-h-[400px] md:min-h-[500px] lg:min-h-[650px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
             boxSizing: "border-box",
             background: "#181614",
@@ -113,7 +113,7 @@ export function DiscoverCoursesSection() {
           }}
         >
           {/* Responsive Flexbox Layout */}
-          <div className="w-full h-full p-4 sm:p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12">
+          <div className="w-full h-full p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-10">
             {/* Left Side - Text Content */}
             <div className="w-full lg:w-2/5 flex flex-col justify-center">
               <div className="mb-6 md:mb-8">
@@ -170,7 +170,7 @@ export function DiscoverCoursesSection() {
 
             {/* Right Side - Course Cards Slider */}
             <div
-              className="relative w-full lg:w-3/5 flex items-center justify-start min-h-[350px] sm:min-h-[400px] md:min-h-[480px]"
+              className="relative w-full lg:w-3/5 flex items-center justify-start min-h-[300px] sm:min-h-[350px] md:min-h-[400px]"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -194,7 +194,7 @@ export function DiscoverCoursesSection() {
                   return (
                     <div
                       key={course.id}
-                      className="absolute transition-all duration-700 ease-out rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-[85vw] sm:max-w-[88vw] md:max-w-[580px]"
+                      className="absolute transition-all duration-700 ease-out rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-[80vw] sm:max-w-[70vw] md:max-w-[480px] lg:max-w-[520px]"
                       style={{
                         aspectRatio: "580 / 480",
                         left: "0px",

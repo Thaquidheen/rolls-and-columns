@@ -152,7 +152,7 @@ export function CoreValuesSection() {
 
   return (
     <section className="relative py-12 md:py-24 bg-white">
-      <div className="w-full mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-8 lg:mb-12 text-center">
           <h2

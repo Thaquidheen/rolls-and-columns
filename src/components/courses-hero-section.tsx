@@ -75,7 +75,7 @@ export function CoursesHeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 h-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="relative z-10 h-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-full flex items-center">
           <div className="w-full max-w-4xl">
             <div className="space-y-6 sm:space-y-8">

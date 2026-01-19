@@ -81,7 +81,7 @@ export function Navbar() {
               alt="Rows & Columns"
               width={150}
               height={40}
-              className="h-10"
+              className="h-8 lg:h-10"
               style={{ width: "auto" }}
               priority
             />
@@ -94,7 +94,7 @@ export function Navbar() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "relative px-4 py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
+                  "relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
                   isActive(item.href)
                     ? "text-white"
                     : "text-white/90 hover:text-white"
@@ -128,7 +128,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <button className="flex items-center gap-3 bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-5 py-2.5 transition-all">
+            <button className="flex items-center gap-2 lg:gap-3 bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-4 py-2 lg:px-5 lg:py-2.5 transition-all">
               <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
                 <svg
                   className="w-5 h-5 text-white"

@@ -65,9 +65,9 @@ export function FloatingCard({
         className
       )}
       style={{
-        width: "clamp(180px, 45vw, 251px)",
-        height: "clamp(220px, 55vw, 308px)",
-        borderRadius: "clamp(20px, 5vw, 29px)",
+        width: "clamp(140px, 14vw, 220px)",
+        height: "clamp(180px, 18vw, 280px)",
+        borderRadius: "clamp(12px, 1.5vw, 24px)",
         border: "3px solid rgba(238, 238, 238, 0.26)",
         background: "rgba(255, 255, 255, 0.11)",
         backdropFilter: "blur(10px)",
@@ -80,8 +80,8 @@ export function FloatingCard({
       {image ? (
         <div className="w-full flex-1 flex items-center justify-center">
           <div className="relative" style={{
-            width: "clamp(120px, 30vw, 172px)",
-            height: "clamp(100px, 25vw, 140px)",
+            width: "clamp(100px, 10vw, 172px)",
+            height: "clamp(80px, 8vw, 140px)",
           }}>
             <Image
               src={image}
@@ -93,7 +93,10 @@ export function FloatingCard({
         </div>
       ) : icon ? (
         <div className="w-full flex-1 flex items-center justify-center">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center flex-shrink-0">
+          <div
+            className="rounded-lg flex items-center justify-center flex-shrink-0"
+            style={{ width: "clamp(56px, 5vw, 96px)", height: "clamp(56px, 5vw, 96px)" }}
+          >
             {icon}
           </div>
         </div>
@@ -105,8 +108,8 @@ export function FloatingCard({
           className="text-white font-semibold leading-tight"
           style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: "clamp(18px, 4.5vw, 29px)",
-            lineHeight: "clamp(22px, 5.5vw, 34px)",
+            fontSize: "clamp(16px, 1.8vw, 29px)",
+            lineHeight: "clamp(20px, 2.2vw, 34px)",
             letterSpacing: "-0.04em",
             fontWeight: 600,
           }}

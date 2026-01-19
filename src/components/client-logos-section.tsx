@@ -72,7 +72,7 @@ const row2Logos: ClientLogo[] = [
 export function ClientLogosSection() {
   return (
     <section className="relative py-12 md:py-16 lg:py-20 bg-white">
-      <div className="w-full mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <h2
           className="text-center mb-12 md:mb-16"

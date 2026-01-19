@@ -35,10 +35,10 @@ export function WhyBusinessLoveSection() {
   };
 
   const getMinHeight = () => {
-    if (!isMounted) return "537.69px"; // Default for SSR
-    if (windowWidth < 640) return "450px";
-    if (windowWidth < 1024) return "480px";
-    return "537.69px";
+    if (!isMounted) return "480px"; // Default for SSR
+    if (windowWidth < 640) return "380px";
+    if (windowWidth < 1024) return "420px";
+    return "480px";
   };
 
   const cardWidth = getCardWidth();

@@ -19,7 +19,7 @@ export function MissionVisionSection() {
   return (
     <section className="relative py-12 md:py-24 bg-white">
       <div className="bg-white">
-        <div className="w-full mx-auto px-4 sm:px-6 md:px-16 lg:px-24">
+        <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             {cards.map((card) => (
               <div
