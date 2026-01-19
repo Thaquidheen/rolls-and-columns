@@ -20,11 +20,11 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "HOME", href: "/", hasDropdown: false },
-  { label: "ABOUT", href: "/about", hasDropdown: true },
+  { label: "ABOUT", href: "/about", hasDropdown: false },
   { label: "COURSES", href: "/courses", hasDropdown: false },
   {
     label: "WHAT WE DO",
-    href: "/services",
+    href: "#",
     hasDropdown: true,
     dropdownItems: [
       { label: "Corporate Training", href: "/corporate" },
@@ -41,6 +41,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
@@ -106,71 +107,89 @@ export function Navbar() {
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-            {navItems.map((item) => (
-              <div
-                key={item.label}
-                className="relative"
-                onMouseEnter={() => item.hasDropdown && item.dropdownItems && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <a
-                  href={item.href}
-                  className={cn(
-                    "relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
-                    isActive(item.href)
-                      ? "text-white"
-                      : "text-white/90 hover:text-white"
-                  )}
-                  style={{
-                    boxSizing: "border-box",
-                    background: isActive(item.href) ? "#22c55e" : "#2B2B2B",
-                    border: "1px solid rgba(255, 255, 255, 0.16)",
-                    fontSize: "14px",
-                  }}
+            {navItems.map((item) => {
+              const hasDropdownItems = item.hasDropdown && item.dropdownItems;
+              const isItemActive = isActive(item.href) || (hasDropdownItems && item.dropdownItems?.some(d => pathname === d.href));
+
+              return (
+                <div
+                  key={item.label}
+                  className="relative"
+                  onMouseEnter={() => hasDropdownItems && setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  {item.label}
-                  {item.hasDropdown && (
-                    <svg
-                      className={cn(
-                        "inline-block ml-1 w-3 h-3 transition-transform duration-200",
-                        activeDropdown === item.label && "rotate-180"
-                      )}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                  {hasDropdownItems ? (
+                    // Button for items with dropdown (no navigation)
+                    <button
+                      type="button"
+                      className="relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full"
+                      style={{
+                        boxSizing: "border-box",
+                        background: "#2B2B2B",
+                        border: "1px solid rgba(255, 255, 255, 0.16)",
+                        fontSize: "14px",
+                        color: isItemActive ? "#22c55e" : "rgba(255, 255, 255, 0.9)",
+                      }}
+                      onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
+                      {item.label}
+                      <svg
+                        className={cn(
+                          "inline-block ml-1 w-3 h-3 transition-transform duration-200",
+                          activeDropdown === item.label && "rotate-180"
+                        )}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    // Link for items without dropdown
+                    <a
+                      href={item.href}
+                      className="relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full hover:text-[#22c55e]"
+                      style={{
+                        boxSizing: "border-box",
+                        background: "#2B2B2B",
+                        border: "1px solid rgba(255, 255, 255, 0.16)",
+                        fontSize: "14px",
+                        color: isItemActive ? "#22c55e" : "rgba(255, 255, 255, 0.9)",
+                      }}
+                    >
+                      {item.label}
+                    </a>
                   )}
-                </a>
-                {/* Dropdown Menu */}
-                {item.hasDropdown && item.dropdownItems && activeDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-2 min-w-[200px]">
-                    <div className="bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden shadow-xl">
-                      {item.dropdownItems.map((dropdownItem) => (
-                        <a
-                          key={dropdownItem.href}
-                          href={dropdownItem.href}
-                          className={cn(
-                            "block px-4 py-3 text-sm font-medium transition-colors",
-                            pathname === dropdownItem.href
-                              ? "text-white bg-[#22c55e]"
-                              : "text-white/80 hover:text-white hover:bg-white/10"
-                          )}
-                        >
-                          {dropdownItem.label}
-                        </a>
-                      ))}
+                  {/* Dropdown Menu */}
+                  {hasDropdownItems && activeDropdown === item.label && (
+                    <div className="absolute top-full left-0 pt-2 min-w-[200px]">
+                      <div className="bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden shadow-xl">
+                        {item.dropdownItems?.map((dropdownItem) => (
+                          <a
+                            key={dropdownItem.href}
+                            href={dropdownItem.href}
+                            className={cn(
+                              "block px-4 py-3 text-sm font-medium transition-colors",
+                              pathname === dropdownItem.href
+                                ? "text-[#22c55e] bg-white/5"
+                                : "text-white/80 hover:text-[#22c55e] hover:bg-white/5"
+                            )}
+                          >
+                            {dropdownItem.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -236,26 +255,74 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 mt-4">
           <div className="px-6 py-4 space-y-2">
-            {navItems.map((item) => (
-              <div key={item.label}>
-                <a
-                  href={item.href}
-                  className="block px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-                {/* Mobile Dropdown Items */}
-                {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
-                  <a
-                    key={dropdownItem.href}
-                    href={dropdownItem.href}
-                    className="block px-4 py-3 pl-8 text-sm font-medium text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                  >
-                    {dropdownItem.label}
-                  </a>
-                ))}
-              </div>
-            ))}
+            {navItems.map((item) => {
+              const hasDropdownItems = item.hasDropdown && item.dropdownItems;
+              const isItemActive = isActive(item.href) || (hasDropdownItems && item.dropdownItems?.some(d => pathname === d.href));
+              const isMobileDropdownOpen = mobileDropdown === item.label;
+
+              return (
+                <div key={item.label}>
+                  {hasDropdownItems ? (
+                    // Button to toggle dropdown on mobile
+                    <button
+                      type="button"
+                      onClick={() => setMobileDropdown(isMobileDropdownOpen ? null : item.label)}
+                      className={cn(
+                        "w-full flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg transition-colors",
+                        isItemActive ? "text-[#22c55e]" : "text-white/80"
+                      )}
+                    >
+                      {item.label}
+                      <svg
+                        className={cn(
+                          "w-4 h-4 transition-transform duration-200",
+                          isMobileDropdownOpen && "rotate-180"
+                        )}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className={cn(
+                        "block px-4 py-3 text-sm font-medium rounded-lg transition-colors hover:bg-white/10",
+                        isItemActive ? "text-[#22c55e]" : "text-white/80 hover:text-[#22c55e]"
+                      )}
+                    >
+                      {item.label}
+                    </a>
+                  )}
+                  {/* Mobile Dropdown Items - Only show when expanded */}
+                  {hasDropdownItems && isMobileDropdownOpen && (
+                    <div className="mt-1 ml-4 border-l border-white/10 pl-4 space-y-1">
+                      {item.dropdownItems?.map((dropdownItem) => (
+                        <a
+                          key={dropdownItem.href}
+                          href={dropdownItem.href}
+                          className={cn(
+                            "block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors hover:bg-white/10",
+                            pathname === dropdownItem.href
+                              ? "text-[#22c55e]"
+                              : "text-white/60 hover:text-[#22c55e]"
+                          )}
+                        >
+                          {dropdownItem.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
             <button className="w-full mt-4 flex items-center justify-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-3">
               <svg
                 className="w-5 h-5 text-white"
