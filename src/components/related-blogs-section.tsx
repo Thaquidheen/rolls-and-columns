@@ -63,7 +63,7 @@ export function RelatedBlogsSection({ currentSlug }: RelatedBlogsSectionProps) {
 
   return (
     <section ref={sectionRef} className="w-full bg-white py-16 md:py-24">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <h2
           ref={headerRef}

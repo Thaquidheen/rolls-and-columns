@@ -65,7 +65,7 @@ export function BlogContentSection({ blog }: BlogContentSectionProps) {
 
   return (
     <section ref={sectionRef} className="w-full bg-white py-12 md:py-20">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Content Sections */}
         <div ref={contentRef} className="space-y-12 md:space-y-16">
           {/* First Content Block */}

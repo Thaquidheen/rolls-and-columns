@@ -6,17 +6,33 @@ import Image from "next/image";
 import gsap from "gsap";
 import { cn } from "@/lib/utils";
 
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
 interface NavItem {
   label: string;
   href: string;
   hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
 }
 
 const navItems: NavItem[] = [
   { label: "HOME", href: "/", hasDropdown: false },
   { label: "ABOUT", href: "/about", hasDropdown: true },
   { label: "COURSES", href: "/courses", hasDropdown: false },
-  { label: "WHAT WE DO", href: "/services", hasDropdown: true },
+  {
+    label: "WHAT WE DO",
+    href: "/services",
+    hasDropdown: true,
+    dropdownItems: [
+      { label: "Corporate Training", href: "/corporate" },
+      { label: "SAP ERP Integration", href: "/services/sap" },
+      { label: "MS Power Platform", href: "/powerbi" },
+      { label: "Case Study", href: "/case-study" },
+    ]
+  },
   { label: "BLOGS", href: "/blogs", hasDropdown: false },
   { label: "CONTACT", href: "/contact", hasDropdown: false },
 ];
@@ -24,6 +40,7 @@ const navItems: NavItem[] = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
@@ -90,39 +107,69 @@ export function Navbar() {
           {/* Desktop Navigation - Centered */}
           <div className="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
             {navItems.map((item) => (
-              <a
+              <div
                 key={item.label}
-                href={item.href}
-                className={cn(
-                  "relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
-                  isActive(item.href)
-                    ? "text-white"
-                    : "text-white/90 hover:text-white"
-                )}
-                style={{
-                  boxSizing: "border-box",
-                  background: isActive(item.href) ? "#22c55e" : "#2B2B2B",
-                  border: "1px solid rgba(255, 255, 255, 0.16)",
-                  fontSize: "14px",
-                }}
+                className="relative"
+                onMouseEnter={() => item.hasDropdown && item.dropdownItems && setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.label}
-                {item.hasDropdown && (
-                  <svg
-                    className="inline-block ml-1 w-3 h-3"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                <a
+                  href={item.href}
+                  className={cn(
+                    "relative px-3 py-2.5 lg:px-4 lg:py-3 font-medium transition-all duration-300 flex items-center justify-center whitespace-nowrap rounded-full",
+                    isActive(item.href)
+                      ? "text-white"
+                      : "text-white/90 hover:text-white"
+                  )}
+                  style={{
+                    boxSizing: "border-box",
+                    background: isActive(item.href) ? "#22c55e" : "#2B2B2B",
+                    border: "1px solid rgba(255, 255, 255, 0.16)",
+                    fontSize: "14px",
+                  }}
+                >
+                  {item.label}
+                  {item.hasDropdown && (
+                    <svg
+                      className={cn(
+                        "inline-block ml-1 w-3 h-3 transition-transform duration-200",
+                        activeDropdown === item.label && "rotate-180"
+                      )}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  )}
+                </a>
+                {/* Dropdown Menu */}
+                {item.hasDropdown && item.dropdownItems && activeDropdown === item.label && (
+                  <div className="absolute top-full left-0 pt-2 min-w-[200px]">
+                    <div className="bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden shadow-xl">
+                      {item.dropdownItems.map((dropdownItem) => (
+                        <a
+                          key={dropdownItem.href}
+                          href={dropdownItem.href}
+                          className={cn(
+                            "block px-4 py-3 text-sm font-medium transition-colors",
+                            pathname === dropdownItem.href
+                              ? "text-white bg-[#22c55e]"
+                              : "text-white/80 hover:text-white hover:bg-white/10"
+                          )}
+                        >
+                          {dropdownItem.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              </a>
+              </div>
             ))}
           </div>
 
@@ -190,13 +237,24 @@ export function Navbar() {
         <div className="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 mt-4">
           <div className="px-6 py-4 space-y-2">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="block px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-              >
-                {item.label}
-              </a>
+              <div key={item.label}>
+                <a
+                  href={item.href}
+                  className="block px-4 py-3 text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                >
+                  {item.label}
+                </a>
+                {/* Mobile Dropdown Items */}
+                {item.dropdownItems && item.dropdownItems.map((dropdownItem) => (
+                  <a
+                    key={dropdownItem.href}
+                    href={dropdownItem.href}
+                    className="block px-4 py-3 pl-8 text-sm font-medium text-white/60 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  >
+                    {dropdownItem.label}
+                  </a>
+                ))}
+              </div>
             ))}
             <button className="w-full mt-4 flex items-center justify-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-3">
               <svg

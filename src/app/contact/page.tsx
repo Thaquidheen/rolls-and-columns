@@ -4,6 +4,8 @@ import {
   Navbar,
   ContactHeroSection,
   ContactInfoSection,
+  ContactFormSection,
+  FAQSection,
   Footer
 } from "@/components";
 
@@ -13,6 +15,8 @@ export default function Contact() {
       <Navbar />
       <ContactHeroSection />
       <ContactInfoSection />
+      <ContactFormSection />
+      <FAQSection />
       <Footer />
     </main>
   );

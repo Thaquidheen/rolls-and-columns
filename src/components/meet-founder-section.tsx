@@ -3,7 +3,8 @@
 export function MeetFounderSection() {
   return (
     <section className="relative w-full bg-[#0a0a0a] overflow-hidden">
-      <div className="flex flex-col lg:flex-row min-h-[600px] md:min-h-[844px]">
+      <div className="max-w-[1920px] mx-auto">
+        <div className="flex flex-col lg:flex-row min-h-[600px] md:min-h-[844px]">
         {/* Left Content */}
         <div className="w-full lg:w-[45%] px-4 sm:px-6 lg:px-8 py-8 md:py-16 lg:py-24 flex flex-col justify-center relative z-10">
           {/* Title */}
@@ -76,7 +77,7 @@ export function MeetFounderSection() {
           <div
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse 80% 80% at 70% 50%, #23B835 0%, #0a0a0a 70%)"
+              background: "radial-gradient(ellipse 50% 70% at 85% 50%, #23B835 0%, #0a0a0a 55%)"
             }}
           />
 
@@ -91,6 +92,7 @@ export function MeetFounderSection() {
               maxHeight: "844.23px",
             }}
           />
+        </div>
         </div>
       </div>
     </section>
