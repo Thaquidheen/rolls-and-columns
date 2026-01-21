@@ -36,7 +36,7 @@ export function MentorSection() {
     <section className="w-full bg-white py-12 md:py-16 lg:py-24">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="relative w-full max-w-[1596px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
+          className="relative w-full overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
             background: "#181614",
             borderColor: "rgba(227, 227, 227, 0.1)",
@@ -145,13 +145,12 @@ export function MentorSection() {
 
                     {/* Description - Semi-transparent white for all cards */}
                     <div
-                      className="transition-colors duration-300 group-hover:text-gray-600 hidden md:block"
+                      className="transition-colors duration-300 text-white/60 group-hover:text-gray-600 hidden md:block"
                       style={{
                         fontFamily: "var(--font-plus-jakarta)",
                         fontWeight: 400,
                         fontSize: "clamp(12px, 1.5vw, 18px)",
                         lineHeight: "1.5",
-                        color: "rgba(255, 255, 255, 0.61)",
                       }}
                     >
                       {stat.description}

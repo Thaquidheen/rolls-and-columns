@@ -104,7 +104,7 @@ export function DiscoverCoursesSection() {
     <section className="w-full bg-white py-12 md:py-16 lg:py-24">
       <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className="relative w-full max-w-[1596px] min-h-[400px] md:min-h-[500px] lg:min-h-[650px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
+          className="relative w-full min-h-[400px] md:min-h-[500px] lg:min-h-[650px] overflow-hidden mx-auto border-2 md:border-4 lg:border-[6px] rounded-2xl md:rounded-3xl lg:rounded-[36px]"
           style={{
             boxSizing: "border-box",
             background: "#181614",
