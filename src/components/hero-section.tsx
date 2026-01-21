@@ -166,25 +166,35 @@ export function HeroSection() {
     >
       {/* Background */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/home/herobg.png"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-        />
+        {/* Gradient bars - full width stair-step pattern */}
+        <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          {[
+            { height: '20%', left: '0%' },
+            { height: '35%', left: '20%' },
+            { height: '50%', left: '40%' },
+            { height: '65%', left: '60%' },
+            { height: '80%', left: '80%' },
+          ].map((bar, i) => (
+            <div
+              key={i}
+              className="absolute bottom-0"
+              style={{
+                width: '20%',
+                height: bar.height,
+                left: bar.left,
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(35, 184, 53, 0.31) 54.81%, #008110 100%)',
+              }}
+            />
+          ))}
+        </div>
         {/* Dot pattern overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-10"
+          className="absolute inset-0 pointer-events-none opacity-30"
           style={{
             backgroundImage: `url('/images/home/dot paatern.png')`,
             backgroundRepeat: "repeat",
           }}
         />
-        {/* Green gradient glow - Bottom-left flow */}
-        <div className="absolute bottom-0 left-0 w-[250px] sm:w-[400px] md:w-[600px] lg:w-[900px] h-[180px] sm:h-[300px] md:h-[500px] lg:h-[700px] bg-[#22c55e]/25 sm:bg-[#22c55e]/30 blur-[80px] sm:blur-[100px] md:blur-[150px] lg:blur-[200px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/4 w-[200px] sm:w-[350px] md:w-[480px] lg:w-[600px] h-[140px] sm:h-[250px] md:h-[380px] lg:h-[500px] bg-[#22c55e]/15 sm:bg-[#22c55e]/20 blur-[60px] sm:blur-[80px] md:blur-[120px] lg:blur-[160px] rounded-full" />
-        <div className="absolute bottom-1/3 right-1/3 w-[160px] sm:w-[280px] md:w-[360px] lg:w-[450px] h-[100px] sm:h-[180px] md:h-[260px] lg:h-[350px] bg-[#22c55e]/8 sm:bg-[#22c55e]/10 blur-[50px] sm:blur-[60px] md:blur-[90px] lg:blur-[120px] rounded-full" />
       </div>
 
       {/* Content Container */}
