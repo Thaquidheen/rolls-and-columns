@@ -189,7 +189,7 @@ export function HeroSection() {
         </div>
         {/* Dot pattern overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-30"
+          className="absolute inset-0 pointer-events-none opacity-70"
           style={{
             backgroundImage: `url('/images/home/dot paatern.png')`,
             backgroundRepeat: "repeat",
@@ -246,7 +246,7 @@ export function HeroSection() {
               </button>
 
               {/* Trust Indicator */}
-              <div className="pt-2 sm:pt-3 md:pt-4 lg:pt-8">
+              <div className="pt-8 sm:pt-10 md:pt-12 lg:pt-16">
                 <AvatarStack delay={0.9} />
               </div>
             </div>

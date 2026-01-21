@@ -65,8 +65,8 @@ export function FloatingCard({
         className
       )}
       style={{
-        width: "clamp(140px, 14vw, 220px)",
-        height: "clamp(180px, 18vw, 280px)",
+        width: "clamp(160px, 18vw, 280px)",
+        height: "clamp(180px, 20vw, 300px)",
         borderRadius: "clamp(12px, 1.5vw, 24px)",
         border: "3px solid rgba(238, 238, 238, 0.26)",
         background: "rgba(255, 255, 255, 0.11)",
@@ -95,7 +95,7 @@ export function FloatingCard({
         <div className="w-full flex-1 flex items-center justify-center">
           <div
             className="rounded-lg flex items-center justify-center flex-shrink-0"
-            style={{ width: "clamp(56px, 5vw, 96px)", height: "clamp(56px, 5vw, 96px)" }}
+            style={{ width: "clamp(80px, 10vw, 168px)", height: "clamp(80px, 10vw, 168px)" }}
           >
             {icon}
           </div>
@@ -105,19 +105,20 @@ export function FloatingCard({
       {/* Title */}
       <div className="text-center w-full">
         <h3
-          className="text-white font-semibold leading-tight"
+          className="text-white"
           style={{
             fontFamily: "'Inter', sans-serif",
-            fontSize: "clamp(16px, 1.8vw, 29px)",
-            lineHeight: "clamp(20px, 2.2vw, 34px)",
+            fontSize: "clamp(18px, 1.8vw, 29px)",
+            lineHeight: "clamp(22px, 2.2vw, 34px)",
             letterSpacing: "-0.04em",
             fontWeight: 600,
           }}
         >
           {subtitle && (
-            <span className="block text-xs sm:text-sm mb-1 font-normal text-white/70">
+            <>
               {subtitle}
-            </span>
+              <br />
+            </>
           )}
           {title}
         </h3>

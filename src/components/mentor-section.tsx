@@ -47,15 +47,31 @@ export function MentorSection() {
         <div className="w-full h-full p-4 md:p-6 lg:p-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_3fr] gap-6 md:gap-8 lg:gap-10 h-full">
             {/* Mentor Card - Full width on mobile, left column on desktop */}
-            <div className="w-full h-full md:max-w-full lg:max-w-[542px]">
+            <div className="w-full md:max-w-full lg:max-w-[542px] h-[400px] sm:h-[500px] md:h-[580px] lg:h-[680px]">
               <div
                 className="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden"
-                style={{
-                  backgroundImage: "url('/images/home/mentor bg.png')",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
+                style={{ background: "#1a1a1a" }}
               >
+                {/* Gradient bars - descending pattern */}
+                <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                  {[
+                    { height: '75%', left: '0%' },
+                    { height: '60%', left: '25%' },
+                    { height: '46%', left: '50%' },
+                    { height: '33%', left: '75%' },
+                  ].map((bar, i) => (
+                    <div
+                      key={i}
+                      className="absolute bottom-0"
+                      style={{
+                        width: '25%',
+                        height: bar.height,
+                        left: bar.left,
+                        background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #23B835 54.81%, #008110 100%)',
+                      }}
+                    />
+                  ))}
+                </div>
                 <div className="relative w-full h-full flex flex-col justify-start px-6 md:px-8 pt-6 md:pt-8">
                   <h2
                     className="font-bold text-white mb-6 uppercase leading-tight"
@@ -75,16 +91,8 @@ export function MentorSection() {
                     ALFAN
                   </h2>
 
-                  {/* Mentor Image with Green Gradient */}
+                  {/* Mentor Image */}
                   <div className="relative w-full flex-1 min-h-[200px] md:min-h-[250px] lg:min-h-[300px] mt-auto">
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, rgba(34, 197, 94, 0.6) 0%, rgba(34, 197, 94, 0.3) 40%, transparent 70%)",
-                        zIndex: 2,
-                      }}
-                    />
                     <Image
                       src="/images/home/Mentor image.png"
                       alt="Mohammed Alfan"
